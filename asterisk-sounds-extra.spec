@@ -4,7 +4,7 @@
 Summary: Extra Sounds for Asterisk, The Open Source PBX
 Name: asterisk-sounds-extra
 Version: 1.5
-Release: 2%{dist}
+Release: 3%{dist}
 License: GPL
 Group: Utilities/System
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -36,8 +36,8 @@ Requires(pre): %{_sbindir}/groupadd
 Requires(pre): %{_sbindir}/useradd
 
 %pre en-ulaw
-groupadd -f asterisk
-useradd -r -M -s /bin/bash -d /home/asterisk -g asterisk asterisk 2> /dev/null || :
+%{_sbindir}/groupadd -r asterisk &>/dev/null || :
+%{_sbindir}/useradd -r -s /bin/bash -d /home/asterisk -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
 
 %package en-alaw
 Summary: Asterisk extra sounds - en - alaw.
@@ -47,8 +47,8 @@ Requires(pre): %{_sbindir}/groupadd
 Requires(pre): %{_sbindir}/useradd
 
 %pre en-alaw
-groupadd -f asterisk
-useradd -r -M -s /bin/bash -d /home/asterisk asterisk 2> /dev/null || :
+%{_sbindir}/groupadd -r asterisk &>/dev/null || :
+%{_sbindir}/useradd -r -s /bin/bash -d /home/asterisk -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
 
 %package en-wideband
 Summary: Asterisk extra sounds - en - g722
@@ -58,8 +58,8 @@ Requires(pre): %{_sbindir}/groupadd
 Requires(pre): %{_sbindir}/useradd
 
 %pre en-wideband
-groupadd -f asterisk
-useradd -r -M -s /bin/bash -d /home/asterisk asterisk 2> /dev/null || :
+%{_sbindir}/groupadd -r asterisk &>/dev/null || :
+%{_sbindir}/useradd -r -s /bin/bash -d /home/asterisk -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
 
 %description en-ulaw
 This package contains Asterisk extra sounds - en - ulaw.
@@ -129,3 +129,8 @@ cd $RPM_BUILD_DIR
 %attr(0664,asterisk,asterisk) /var/lib/asterisk/sounds/en/LICENSE-asterisk-extra-en-%{version}
 %attr(0664,asterisk,asterisk) /var/lib/asterisk/sounds/.asterisk-extra-sounds-en-g722-%{version}
 %attr(0664,asterisk,asterisk) /var/lib/asterisk/sounds/.asterisk-extra-sounds-en-sln16-%{version}
+
+%changelog
+* Wed Nov 15 2017 Stefano Fancello <stefano.fancello@nethesis.it> 1.5-3
+- Create Asterisk home when creating asterisk user
+
