@@ -36,8 +36,8 @@ Requires(pre): %{_sbindir}/groupadd
 Requires(pre): %{_sbindir}/useradd
 
 %pre en-ulaw
-groupadd -f asterisk
-useradd -r -M -s /bin/bash -d /home/asterisk -g asterisk asterisk 2> /dev/null || :
+%{_sbindir}/groupadd -r asterisk &>/dev/null || :
+%{_sbindir}/useradd -r -s /bin/bash -d /home/asterisk -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
 
 %package en-alaw
 Summary: Asterisk extra sounds - en - alaw.
@@ -47,8 +47,8 @@ Requires(pre): %{_sbindir}/groupadd
 Requires(pre): %{_sbindir}/useradd
 
 %pre en-alaw
-groupadd -f asterisk
-useradd -r -M -s /bin/bash -d /home/asterisk asterisk 2> /dev/null || :
+%{_sbindir}/groupadd -r asterisk &>/dev/null || :
+%{_sbindir}/useradd -r -s /bin/bash -d /home/asterisk -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
 
 %package en-wideband
 Summary: Asterisk extra sounds - en - g722
@@ -58,8 +58,8 @@ Requires(pre): %{_sbindir}/groupadd
 Requires(pre): %{_sbindir}/useradd
 
 %pre en-wideband
-groupadd -f asterisk
-useradd -r -M -s /bin/bash -d /home/asterisk asterisk 2> /dev/null || :
+%{_sbindir}/groupadd -r asterisk &>/dev/null || :
+%{_sbindir}/useradd -r -s /bin/bash -d /home/asterisk -c 'Asterisk User' -g asterisk asterisk &>/dev/null || :
 
 %description en-ulaw
 This package contains Asterisk extra sounds - en - ulaw.
