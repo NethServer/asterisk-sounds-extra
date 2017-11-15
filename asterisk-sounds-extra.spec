@@ -4,7 +4,7 @@
 Summary: Extra Sounds for Asterisk, The Open Source PBX
 Name: asterisk-sounds-extra
 Version: 1.5
-Release: 2%{dist}
+Release: 3%{dist}
 License: GPL
 Group: Utilities/System
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -129,3 +129,8 @@ cd $RPM_BUILD_DIR
 %attr(0664,asterisk,asterisk) /var/lib/asterisk/sounds/en/LICENSE-asterisk-extra-en-%{version}
 %attr(0664,asterisk,asterisk) /var/lib/asterisk/sounds/.asterisk-extra-sounds-en-g722-%{version}
 %attr(0664,asterisk,asterisk) /var/lib/asterisk/sounds/.asterisk-extra-sounds-en-sln16-%{version}
+
+%changelog
+* Wed Nov 15 2017 Stefano Fancello <stefano.fancello@nethesis.it> 1.5-3
+- Create Asterisk home when creating asterisk user
+
